@@ -263,3 +263,29 @@ Add additional columns, such as source and destination port.<br>
 Remove the column "New Column."<br>
 
 ## Analyzing HTTP Data
+Using the sallyStealer.pcapng file complete the following:
+1. Determine what websites Sally visited.<br>
+
+howtousebitcoin.com<br>
+howtobeaspy.com<br>
+www.acmecompany.yolasite.com<br>
+sitewit.com<br>
+widgetcorp.yolasite.com<br>
+dellsupportcenter.com<br>
+
+2. Determine which PHP pages were visited on the websites.<br>
+
+salesprojections.php<br>
+IntellectualProperty.php<br>
+
+3. Determine if Sally sent any communications.<br>
+
+Yes she did. We have her full name, phone number, and email as well.<br>
+Form item: "0<text>" = "Sally Stealer"<br>
+Form item: "2<text>" = "7706175323"<br>
+Form item: "1<text>" = "Sallystealer@acme.com"<br>
+Form item: "3<textarea>" = "This is Sally Stealer, I have the secret Sales Projections and Intellectual Property as we discussed.  Please send me the 5 bitcoins as promised.  Hurry as Acme is starting to have suspicions "<br>
+
+4. Based on the above findings, summarize whether you believe Sally has malicious intent.<br>
+
+Yes, based on the websites she visited and php files she accessed it is clear she is trying to conduct data exfiltration.<br>
