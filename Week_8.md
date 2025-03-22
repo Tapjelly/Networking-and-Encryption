@@ -289,3 +289,53 @@ Form item: "3<textarea>" = "This is Sally Stealer, I have the secret Sales Proje
 4. Based on the above findings, summarize whether you believe Sally has malicious intent.<br>
 
 Yes, based on the websites she visited and php files she accessed it is clear she is trying to conduct data exfiltration.<br>
+
+# Week 8.3
+## Analyze ARP
+Using arp_packets.pcap
+Document the physical addresses found for each of the following IP addresses: <br>
+192.168.47.1 is at 00:50:56:c0:00:08<br>
+192.168.47.2 is at 00:50:56:fd:2f:16<br>
+192.168.47.200 is at 00:0c:29:0f:71:a3<br>
+192.168.47.254 is at 00:50:56:f9:f5:54<br>
+
+1. Further analyze the packet capture to determine if these IPs present any potential security vulnerabilities, and write a summary of your findings to provide to CompuCorp.<br>
+Yes, these adresses present a potential security vulnerability. ARP spoofing is when an attacker links their MAC address to the legitimate IP of a device. This enables MitM, DoS, and session hijacking attacks.
+
+2. Name a few ways to protect against this vulnerability.<br>
+Use static ARP entries, use detection tools, enable dynaminc ARP Inspection, Implement Network Segmentation, and use secure protocols.
+
+3. Determine the primary vendor for the MAC addresses.<br>
+VMware is the primary vendor
+
+## Enumeration with Ping
+Use ping to determine which of the following IP addresses are accepting or rejecting connections.<br>
+192.0.43.10 accepting<br>
+107.191.96.26 accepting<br>
+41.19.96.234 rejecting<br>
+107.191.101.180 accepting<br>
+23.226.229.4 accepting<br>
+154.226.18.4 rejecting<br>
+176.56.238.3 accepting<br>
+176.56.238.99 rejecting<br>
+
+## Enumeration with Traceroute
+Run traceroute, or tracert for Windows, against the IP addresses from the last activity that returned a failed response.<br>
+Determine where in their transmission (at which hop) the transmission failed.<br>
+41.19.96.234 fails at the 3rd loop. Map shows it made it to Toronto.<br>
+154.226.18.4 fails at the 23rd loop. The Map shows it made it to Johannesburg<br>
+176.56.238.99 at the 13th loop. The Map shows it made it to Johannesburg<br>
+
+## Analyze TCP traffic
+Using packetcapTCPcalss.pcappng<br>
+Find all the TCP handshakes for establishing a connection.<br>
+There are 3 SYN packets at packets 1, 4, and 7.<br>
+Find any TCP terminations.<br>
+There is 1 FIN packet at packet 10<br>
+We are unable to establish what the connection is to as the associated IPs have moved to the cloud and are often changing.<br>
+## Analyze a SYN scan
+Based on the host responses, determine which ports are open, closed, or filtered.
+I looked at the Conversations page in Wireshark. Under the TCP tab we have 1994 total packets.
+There are 3 open ports at 22, 53 and 80. We can tell because these streams have 5 packets. The server will reply with a [SYN, ACK] and communication will begin.
+There are 4 close ports at 25, 113, 70, and 31337. We can tell these are closed because they each have 2 packets in the stream. 1 [SYN] and 1 [RST, ACK] that signifies the communication was terminated.
+The remaining ports are all filtered and will not accept any traffic and a response from the server will not be sent.
