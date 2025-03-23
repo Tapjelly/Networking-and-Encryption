@@ -14,7 +14,7 @@ We can also see the each request has a different MAC address meaning the attacke
 See file Week_9.1 RoutingSchemesAndProtocols.pdf
 
 ## Analyzing Wireless Security
-Refer to Wireless2.pcap <br>
+Refer to wireless2.pcapng <br>
 In this network Capture I can see 4 different wireless routers.<br>
 BSSID                     SSID          Wireless Security<br>
 00:01:e3:41:bd:6e         martinet3     WPA1<br>
@@ -24,7 +24,7 @@ BSSID                     SSID          Wireless Security<br>
 *Note: WEP is obselete and should not be used*
 
 ## Analyzing Wireless Attacks
-Refer to KansascityWEP.pcap <br>
+Refer to kansascityWEP.pcap <br>
 We need to decrypt this packet capture. Thankfully it was encrypted with WEP. We will use aircracker-ng to find the secret key. Key is 1F:1F:1F:1F:1F.
 The security concern here is that it took us less than a minute to decrypt all of these packets through a dictionary attack. A more secure encryption protocol must be in place to secure sensitive data.
 
