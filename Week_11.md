@@ -37,9 +37,30 @@ You ca_n neve_r catc_h the _Alphab_et Ban_dit, M_y next_ Targe_t is C_alvins_ Ho
 
 ## OpenSSL
 
-
-'''console
+To complete this activity we will use wget to download the encrypted message. We will then use cat to find our key and IV. Using openssl we will decrypt the message:
+```console
 wget https://gist.githubusercontent.com/jmmeacham/d894fcde2f5ed5613fe49fee433a6bbc/raw/809ea931822ac3ed30e93d864bf251f7c106166e/key-iv to download the file
+wget https://gist.githubusercontent.com/jmmeacham/d894fcde2f5ed5613fe49fee433a6bbc/raw/809ea931822ac3ed30e93d864bf251f7c106166e/key-iv
 cat key-iv
 openssl enc -pbkdf2 -nosalt -aes-256-cbc -in communication.txt.enc -d -base64 -K 346B3EFB4B899E8205C4B35E91F5A4605A54F89730AE65CA2C43AB464E76CA99 -iv 759D1B9BF335985F55E3E9940E751B67
-'''
+```
+From: Captain Strickland 
+ 
+Great job cracking all the Alphabet's coded messages so 
+far, but we need to act faster. 
+ 
+I need you and your partner to meet me at Lou's Cafe 
+tomorrow at noon. 
+I have some additional information to share about the 
+Alphabet Bandit. 
+ 
+I need you to do the following things: 
+ 
+1) Write a message called "meetingplace.txt" for your 
+partner, letting them know about the secret meeting 
+tomorrow.  
+2) In the message, don't use your real names! 
+3) Create a new key and IV with OpenSSL. 
+4) Use OpenSSL with that key and IV to encrypt the message. 
+5) Don't send the message until we give you the green 
+light.
