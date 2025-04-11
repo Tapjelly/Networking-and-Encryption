@@ -64,3 +64,92 @@ tomorrow.
 4) Use OpenSSL with that key and IV to encrypt the message. 
 5) Don't send the message until we give you the green 
 light.
+
+# Week 11.2
+
+## Cryptography Refresher
+Continuing off of the last activity we will send our partner the below encrypted message to meet at a location:
+
+Dear kxqwhu,
+We must meet a Lou's Cafe at 6pm. See you then...
+From,
+Edqdqd Pxiilqv
+
+```console
+nano meeting.txt
+# We must hten encrypt our message for our partner: 
+openssl enc -pbkdf2 -nosalt -aes-256-cbc -in meeting.txt 
+-out meeting.txt.enc -base64 -K 5284A3B154D99487D9D8D8508461A478C7BEB67081A64AD9A15147906E8E8564 -iv 1907C5E255F7FC9A6B47B0E789847AED
+# I send my partner my KEY, IV, and the meeting file.
+# They will decrpyt it using the following:
+openssl enc -pbkdf2 -nosalt -aes-256-cbc -d -in 
+meetingplace_update.txt.enc -base64 -K 5284A3B154D99487D9D8D8508461A478C7BEB67081A64AD9A15147906E8E8564 -iv 1907C5E255F7FC9A6B47B0E789847AED
+
+```
+
+## Optinmzing with Asymmetric Public Keys
+In this activity we will calculate how many keys would be needed for each team on the police force. We will also take note that we will need far fewer Asymmetric keys.
+
+1. To calculate for the SWAT team, with 10 officers: 
+Symmetric: (10 * 9)/2 = 45 
+Asymmetric: 10 * 2 = 20 
+Difference: 45 - 20 = 25 
+2. To calculate for the Canine Unit, with 25 officers: 
+Symmetric: (25 * 24)/2 = 300
+Asymmetric: 25 * 2 = 50 
+Difference: 300 - 50 = 250 
+4. To calculate for Internal Affairs, with 45 officers: 
+Symmetric: (45 * 44)/ 2 = 990 
+Asymmetric: 45 * 2 = 90 
+Difference: 990 - 90 = 900 
+ 
+## GPG
+```console
+gpg --gen-key
+gpg --list-keys
+gpg --armor --output matthew_key.gpg --export example@hotmail.com
+more matthew_key.gpg
+# My public key that I generated for this lab.
+
+-----BEGIN PGP SIGNATURE-----
+iQGzBAABCgAdFiEEQe/4IKvsKhoc3b63BCXHdCgcySoFAmfPbYoACgkQBCXHdCgc
+ySr7IQv+KYyTpWQpO/erLOwS51qWfpnRjGzi75h/kTBEsvN+RW9QJXNhGQbvKSih
+C3WJFDq30o/bJcg55ou3tMocA/CsHItwdLQBTnCOWld5eb8WNPqsA6/qwhDAwF1X
+WFhe/Xc8SMTsPaFOHvBVcERu6qNHRnMHZ2hSQU1068UcE+ydJ8K02l8+ffgdCbL8
+6qz7B+spHalgTmvYTxWGrGo4vB0TOREHJ21ar6StGAbRMbAJf5NneuPTjIO8YY3G
+TwVM+eBF+qQ93aILxzksYItjtPFWrUFeBTbFrM2KviTyqCKngkzVN4SBRoP3mae9
+stQbe+W1NeiIiUvVmBpycwfGWIwITkOV24Nt+LXxUmHtvCYNZd0mrWAegJOaiiFF
+xBBvEWkwkmHdaaS783MH6nsq1qpLQ5MfD3TWKkI33RN6FbR5bPzsLtQf7h8CA+Z1
+hDlHY90i+Q05EDozk9Vizxsay+uAO3BNtkQh4J7iy39PtppH/84csIXuKIhA5m2x
+L7mIvEwc
+=D2sj
+-----END PGP SIGNATURE-----
+# Then I must import my partners key to complete the two way encryption and send them my message.
+gpg --import partner_key.gpg
+gpg --output matthew_secret_idea.txt.enc --encrypt --recipient 
+partner_key.gpg secret_idea.txt
+# After we exchange messages I will decrypt the message my partner sent me by using
+gpg --output decrypted_message.txt --decrypt partner_secret_idea.txt.enc
+```
+## Digital Signatures
+We need to validate the messages we recieved from our captain. <br>
+First we will extract the messages we recieved and import the senders key:
+```console
+gpg --import strickland_publickey.gpg
+gpg --verify message1.sig
+gpg --verify message2.sig
+gpg --verify message3.sig
+# Verification is successful on the first two messages but fails on the final message indicating it is forged.
+
+```
+# Week 11.3
+
+## Cryptography Refresher
+
+## Steganography
+
+## SSL Certificates
+
+## Cryptographic Attacks
+
+## Hashcat
