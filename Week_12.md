@@ -150,3 +150,6 @@ MAC Address: 02:42:AC:10:B4:48 (Unknown)
 Nmap done: 1 IP address (1 host up) scanned in 12.43 seconds
 # The behaviour of our firewall indicates it is host-based. We see ports are unfiltered. It is not a perimiter firewall but a private one on the UFW machine itself. It will operate on both Layer 3 and 4 of the OSI filering both IP and ports/protocols.
 ```
+# Week 12.2
+These activities will be uploaded as PDFs.
+# Week 12.3
