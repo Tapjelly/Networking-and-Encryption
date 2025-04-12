@@ -144,12 +144,34 @@ gpg --verify message3.sig
 ```
 # Week 11.3
 
-## Cryptography Refresher
-
 ## Steganography
+We will use steganohide to pull text embedded in an image:
+```console
+steghide extract -sf mydreamcar.jpg
+cat list_of_targets.txt 
+# Contents
+List of Homes to Break into
 
+Doctor Brown House - Done
+Mayor Wilson's House - Done
+Mrs Peaboday's House - Done
+Captain Stricklands house - Next
+```
 ## SSL Certificates
+In this lab we used the below link to learn where to find SSL certificates and how to verify them.
+
+https://view.genial.ly/6515deaad55b010011ae9cd8/interactive-image-hillvalley
 
 ## Cryptographic Attacks
-
+We are given the encrpyted password cbzhptmm and need to decrypt it.<br>
+We are provided a script to decrypt the password python3 encrypter.py<br>
+We test the script by seeing what some other plaintext encrypts into. We determine the encryption is in a key of 12.<br>
+Therefore our password is jigowatt
 ## Hashcat
+For this activity we are given a hash (f31663d6c912b0b1ced885a6c6bbab7c) and a (secret.zip) file. 
+```console
+echo f31663d6c912b0b1ced885a6c6bbab7c > hashwork.txt
+hashcat -m 0 -a 0 -o solved.txt hashwork.txt /usr/share/wordlist/rockyou.txt --force
+cat solved.txt
+f31663d6c912b0b1ced885a6c6bbab7c:ilovelorraine
+```
